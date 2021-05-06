@@ -1,0 +1,32 @@
+<nav class="topnav">
+  <a routerLink="/home">Book Bhandar</a>
+  <a routerLink="/book/store/default">Store</a>
+  <a routerLink="/rss">News</a>
+  <ng-template [ngIf]="isUserLogged()">
+    <a routerLink="/user/purchaseHistory">Purchase History</a>
+    <a *ngIf="isUserAdmin()" routerLink="/book/create">New Book</a>
+  </ng-template>
+  <div class="search-container">
+    <form #formDir="ngForm" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+      <input type="text" name="query" placeholder="Search" formControlName="query" />
+      <button type="submit" [disabled]="searchForm.invalid"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <div>
+    <ng-template [ngIf]="!isUserLogged()">
+      <a class="menu-item-right" routerLink="/user/register">Register</a>
+      <a class="menu-item-right" routerLink="/user/login">Login</a>
+    </ng-template>
+    <ng-template [ngIf]="isUserLogged()">
+      <a class="menu-item-right" routerLink="/home" (click)="logout()">
+        {{getUsername()}}
+        <span>Logout</span>
+      </a>
+      <a class="menu-item-right" routerLink="/user/profile/mine">
+        {{getUsername()}}
+        <span>Hello {{username}}</span>
+      </a>
+      <a class="menu-item-right" routerLink="/user/cart">Cart ({{cartItems}})</a>
+    </ng-template>
+  </div>
+</nav>

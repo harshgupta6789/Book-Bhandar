@@ -1,0 +1,10 @@
+<br>
+<button class="rss-btn" (click)="GetRssFeedData()">
+    VIEW LATEST BOOK NEWS
+</button>
+ <!-- <h2>
+    {{RssData?.rss.channel[0].title[0]}}
+</h2> -->
+<ul>
+    <li *ngFor="let o of RssData?.rss.channel[0].item"><a href="{{o.link[0]}}" target="_blank">{{o.title[0]}}</a></li>
+</ul>
