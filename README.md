@@ -11,7 +11,7 @@
 - Go to server folder.
 - Run 'npm i'
 - run 'npm start'
-- Go to server folder.
+- Go to client folder.
 - Run 'npm i'.
 - Run 'ng serve'.
 - Go to localhost:4200 on browser.
